@@ -1,3 +1,8 @@
+
+stages:
+  - build
+  - deploy
+
 build-job:
   stage: build
   image: node:16.14.0
@@ -11,3 +16,8 @@ build-job:
   artifacts:
     paths:
       - "dist/"
+
+deploy-job:
+  stage: deploy
+  script:
+    - ls
