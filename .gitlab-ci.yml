@@ -8,7 +8,10 @@ build-job:
   only:
     - main
   cache:
-    key: node_modules
+    key: 
+      files: 
+        - package-lock.json
+        - yarn.lock
     paths:
       - node_modules/
   image: node:16.14.0
