@@ -25,5 +25,7 @@ deploy-job:
     - ls
     - echo "${SSH_KEY}"
     - sshpass -V
+    - export SSHPASS=$USER_PASS 
+    - sshpass -e scp -o stricthostkeychecking=no -r . ${USERNAME}@${HOST}:/home/www
 #    - scp -r dist/ root@47.100.60.14:/home/www
 
