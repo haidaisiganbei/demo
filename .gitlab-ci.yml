@@ -1,4 +1,3 @@
-
 stages:
   - build
   - deploy
@@ -21,3 +20,6 @@ deploy-job:
   stage: deploy
   script:
     - ls
+    - echo "${SSH_KEY}"
+    - scp -r dist/ root@47.100.60.14:/home/www
+
