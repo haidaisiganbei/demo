@@ -6,7 +6,8 @@ build-job:
     - node -v
     - npm -v
     - yarn -v
-
+    - yarn
+    - yarn build
 test-job1:
   stage: test
   script:
