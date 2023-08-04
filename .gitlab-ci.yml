@@ -1,13 +1,12 @@
 
-only:
-  - main
-
 stages:
   - build
   - deploy
 
 build-job:
   stage: build
+  only:
+    - main
   cache:
     key: node_modules
     paths:
@@ -26,6 +25,8 @@ build-job:
 
 deploy-job:
   stage: deploy
+  only:
+    - main
   before_script:
   - apt-get update -qq && apt-get install -y -qq sshpass
   script:
