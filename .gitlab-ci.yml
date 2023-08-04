@@ -8,6 +8,9 @@ build-job:
     - yarn -v
     - yarn
     - yarn build
+  artifacts:
+    paths:
+      - "build/"
 test-job1:
   stage: test
   script:
