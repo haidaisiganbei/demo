@@ -1,8 +1,6 @@
-
 stages:
   - build
   - deploy
-
 build-job:
   stage: build
   only:
@@ -25,13 +23,17 @@ build-job:
   artifacts:
     paths:
       - "dist/"
-
 deploy-job:
   stage: deploy
   only:
     - main
   before_script:
-  - apt-get update -qq && apt-get install -y -qq sshpass
+    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - chmod 400 "$SSH_PRIVATE_KEY"
+    - ssh-add "$SSH_PRIVATE_KEY"
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
   script:
     - ls
     - echo "${SSH_KEY}"
